@@ -1,11 +1,12 @@
 import streamlit as st
-import google.generativeai as g_gen
+import google.generativeai as genai
+import os
 
 # Configuramos el lugar de la API
-g_gen.configure(api_key="AIzaSyA2DyBAOkP7xjp8TcHrHI1Xvv4QKShUkSw")
+genai.configure(api_key="AIzaSyA2DyBAOkP7xjp8TcHrHI1Xvv4QKShUkSw")
 
 # Cargamos el modelo
-gemini_model = g_gen.get_model('models/gemini-pro')
+gemini_model = genai.GenerativeModel('gemini-1.5-flash')
 
 # Función de respuesta de "texto"
 def generate_response(qtn):
@@ -16,13 +17,13 @@ def generate_response(qtn):
         return f"Ocurrió un error: {e}"
 
 # Nombramos la pestaña web
-st.set_page_config(page_title="QnA")
+st.set_page_config(page_title="Ecosystem tech")
 
 # Agregamos el título
 st.title("Ecosystem Application")
 
 # Definimos entrada/preguntas
-input_text = st.text_input("Ingresa tus preguntas:")
+input_text = st.text_input("¿En que puedo ayudarte?")
 
 # Agregamos botón
 submit = st.button("Generar respuesta")
